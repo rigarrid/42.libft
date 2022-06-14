@@ -16,15 +16,17 @@ int	ft_atoi(char *a)
 		if (a[con] == '-')
 		{
 			aux[0] *= -1;
-			aux[1]++;
+			aux[1] += 1;
 		}
 		else if (a[con] == '+')
-			aux[1]++;
+			aux[1] += 1;
+		if (aux[1] > 1)
+			return (0);
 		con++;
 	}
-	while (a[con] >= '0' || a[con] <= '9')
+	while (a[con] >= '0' && a[con] <= '9')
 	{
-		num = (a[con] - 48) + (num * 10);
+		num = a[con] - 48 + (num * 10);
 		con++;
 	}
 	if (aux[1] > 1)
