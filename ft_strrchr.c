@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 15:54:00 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/17 18:27:43 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/06/17 18:32:27 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/06/17 18:52:26 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	con;
-
-	con = 0;
-	while (s[con])
-		con++;
-	return (con);
+	while (*s)
+		s++;
+	while (*s - 1)
+	{
+		if (*s == (char )c)
+			return ((char *)s);
+		s--;
+	}
+	return (0);
 }

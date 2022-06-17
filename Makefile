@@ -1,10 +1,18 @@
 NAME = libft
 FLAGS = -Wall -Wextra -Werror
-FUNCTIONS = ft_atoi.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_bzero.c ft_isalpha.c ft_isdigit.c ft_memset.c
-OBJECTS =  ft_atoi.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_bzero.o ft_isalpha.o ft_isdigit.o ft_memset.o
+FUNCTIONS = ft_strrchr.c ft_strchr.c ft_tolower.c ft_toupper.c ft_strlcat.c ft_strlcpy.c ft_memmove.c ft_memcpy.c ft_atoi.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_bzero.c ft_isalpha.c ft_isdigit.c ft_memset.c
+OBJECTS = ft_strrchr.o ft_strchr.o ft_tolower.o ft_toupper.o ft_strlcat.o ft_strlcpy.o ft_memmove.o ft_memcpy.o ft_atoi.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_bzero.o ft_isalpha.o ft_isdigit.o ft_memset.o
 
 all: $(NAME)
 
 $(NAME):
-	@gcc $(NAME) $(FLAGS) -c $(FUNCTIONS)
-	@ar -rsv $(NAME).a $(OBJECTS) 
+	@gcc $(FLAGS) -c $(FUNCTIONS)
+	@ar -rsv $(NAME).a $(OBJECTS)
+
+clean:
+	@rm -f $(OBJECTS)
+
+fclean: clean
+	@rm -f $(NAME).a
+
+re: fclean all

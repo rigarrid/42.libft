@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 15:54:00 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/17 18:27:43 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/06/17 13:23:22 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/06/17 15:47:38 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	size_t	con;
+	size_t		con;
+	const char	*src2;
+	char		*dst2;
 
 	con = 0;
-	while (s[con])
-		con++;
-	return (con);
+	src2 = src;
+	dst2 = dst;
+	if (dst == src)
+		return (dst);
+	if (dst < src)
+	{
+		while (con < n)
+		{
+			*(dst2 + con) = *(src2 + con);
+			con++;
+		}
+	}
+	if (dst > src)
+	{
+		while (n--)
+			*(dst2 + n) = *(src2 + n);
+	}
+	return (dst);
 }
