@@ -14,17 +14,16 @@ int	ft_atoi(const char *a)
 {
 	int	num;
 	int	con;
-	int	aux[2];
+	int	aux;
 
 	num = 0;
 	con = 0;
-	aux[0] = 1;
-	aux[1] = 0;
+	aux = 1;
 	while (a[con] == 32 || (a[con] <= 13 && a[con] > 0))
 		con++;
 	if (a[con] == '-')
 	{
-		aux[0] *= -1;
+		aux *= -1;
 		con++;
 	}
 	else if (a[con] == '+')
@@ -34,5 +33,5 @@ int	ft_atoi(const char *a)
 		num = a[con] - 48 + (num * 10);
 		con++;
 	}
-	return (num * aux[0]);
+	return (num * aux);
 }
