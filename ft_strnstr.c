@@ -6,7 +6,7 @@
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 16:29:11 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/27 16:29:16 by rigarrid         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:37:22 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 		{
 			c2 = 0;
 			while (s1[c1 + c2] && s2[c2] && c1 + c2 < len
-					&& s1[c1 + c2] == s2[c2])
+				&& s1[c1 + c2] == s2[c2])
 				c2++;
 			if (s2[c2] == 0)
 				return ((char *)s1 + c1);
