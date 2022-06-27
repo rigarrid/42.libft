@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 18:32:27 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/27 10:47:42 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/06/27 15:19:34 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/06/27 16:07:07 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	while (*s)
-		s++;
-	while (*s - 1)
-	{
-		if (*s == (char )c)
-			return ((char *)s);
-		s--;
-	}
-	return (0);
+	void	*result;
+	size_t	sum;
+
+	sum = count * size;
+	if (sum < count || sum < size)
+		return (NULL);
+	result = malloc(sum);
+	if (result == NULL)
+		return (NULL);
+	ft_bzero(result, sum);
+	return (result);
 }

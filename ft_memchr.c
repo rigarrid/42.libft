@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 18:32:27 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/27 10:47:42 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/06/27 11:06:06 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/06/27 11:19:23 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stddef.h>
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (*s)
-		s++;
-	while (*s - 1)
+	size_t	con;
+
+	con = 0;
+	while ((char *)s && con < n)
 	{
-		if (*s == (char )c)
-			return ((char *)s);
-		s--;
+		if (((char *)s)[con] == (char )c)
+			return ((void *)s + con);
+		con++;
 	}
-	return (0);
+	return (NULL);
 }
