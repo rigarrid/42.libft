@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 15:57:54 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/28 11:30:53 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/06/28 12:46:30 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/06/28 13:30:13 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t nb)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	dlen;
-	size_t	d;
-	size_t	slen;
+	char			*result;
+	unsigned int	c;
 
-	dlen = ft_strlen(dest);
-	slen = ft_strlen((char *)src);
-	d = 0;
-	if (nb == 0)
-		return (slen);
-	if (dlen > nb)
-		return (slen + nb);
-	while (((unsigned char *) src)[d] && dlen < (nb - 1))
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	result = malloc(sizeof(char) * (len + 1));
+	if (result == NULL)
+		return (NULL);
+	c = 0;
+	while (c < len)
 	{
-		dest[dlen] = ((unsigned char *) src)[d];
-		dlen++;
-		d++;
+		result[c] = s[c + start];
+		c++;
 	}
-	if (d < nb)
-		dest[dlen] = 0;
-	return ((dlen - d) + slen);
+	result[c] = 0;
+	return (result);
 }
