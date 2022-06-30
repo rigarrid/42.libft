@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 14:57:07 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/30 11:31:02 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/06/30 18:22:19 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/06/30 18:38:28 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*aux;
-	int		size;
+	char	*str;
+	size_t	con;
 
-	size = 0;
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	size = ft_strlen(s1);
-	while (size && ft_strchr(set, s1[size]))
-		size--;
-	aux = ft_substr(s1, 0, size + 1);
-	return (aux);
+	if (!(str = ft_strdup(s)))
+		return (NULL);
+	con = 0;
+	while (str[con])
+	{
+		str[con] = (*f)(con, str[con]);
+		con++;
+	}
+	return (str);
 }

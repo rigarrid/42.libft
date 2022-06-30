@@ -6,20 +6,11 @@
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 18:05:51 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/17 18:28:14 by rigarrid         ###   ########.fr       */
+/*   Updated: 2022/06/30 14:51:12 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	con;
-
-	con = 0;
-	while (s[con])
-		con++;
-	return (con);
-}
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
