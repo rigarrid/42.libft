@@ -6,7 +6,7 @@
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:57:07 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/30 11:31:02 by rigarrid         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:57:42 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,6 +17,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		size;
 
 	size = 0;
+	if (!s1)
+		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
 	size = ft_strlen(s1);

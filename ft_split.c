@@ -6,7 +6,7 @@
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:31:18 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/30 17:05:00 by rigarrid         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:31:48 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -47,6 +47,17 @@ static size_t	lenght_counter(char const *s, char c, size_t con)
 	return (lenght);
 }
 
+static void	*ft_free(char **result, size_t icon)
+{
+	while (icon > 0)
+	{
+		free(result[--icon]);
+	}
+	free(result);
+	result = NULL;
+	return (result);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
@@ -68,7 +79,9 @@ char	**ft_split(char const *s, char c)
 		len = lenght_counter(s, c, con);
 		result[icon] = ft_substr(s, con, len);
 		if (result[icon] == NULL)
-			return (NULL);
+		{
+			return (ft_free(result, icon));
+		}
 		con += len;
 	}
 	return (result);

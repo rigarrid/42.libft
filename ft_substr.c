@@ -6,7 +6,7 @@
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:46:30 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/06/30 16:22:22 by rigarrid         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:33:08 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -17,6 +17,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char			*result;
 	unsigned int	c;
 
+	if (!s)
+		return (NULL);
 	if (start > ft_strlen(s))
 		return (ft_strdup(""));
 	result = malloc(sizeof(char) * (len + 1));

@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 18:22:19 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/07/06 12:52:14 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/07/06 13:37:25 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/07/06 14:03:02 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <unistd.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+static void	ft_putnbr(int nb, int fd)
 {
-	char			*str;
-	unsigned int	con;
-
-	if (!s)
-		return (NULL);
-	str = ft_strdup(s);
-	if (str == NULL)
-		return (NULL);
-	con = 0;
-	while (str[con])
+	if (nb == -2147483648)
 	{
-		str[con] = (*f)(con, str[con]);
-		con++;
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		ft_putnbr(147483648, fd);
 	}
-	return (str);
+	else if (nb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr(nb *= -1, fd);
+	}
+	else if (nb > 9)
+	{
+		ft_putnbr(nb / 10, fd);
+		ft_putnbr(nb % 10, fd);
+	}
+	else
+		ft_putchar_fd(nb + 48, fd);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	ft_putnbr(n, fd);
 }

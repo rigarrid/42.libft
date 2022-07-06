@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 18:22:19 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/07/06 12:52:14 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/07/06 12:44:15 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/07/06 12:50:20 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <unistd.h>
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putendl_fd(char *s, int fd)
 {
-	char			*str;
-	unsigned int	con;
-
 	if (!s)
-		return (NULL);
-	str = ft_strdup(s);
-	if (str == NULL)
-		return (NULL);
-	con = 0;
-	while (str[con])
-	{
-		str[con] = (*f)(con, str[con]);
-		con++;
-	}
-	return (str);
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
