@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rigarrid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 14:40:56 by rigarrid          #+#    #+#             */
-/*   Updated: 2022/07/11 12:00:56 by rigarrid         ###   ########.fr       */
+/*   Created: 2022/07/08 14:53:05 by rigarrid          #+#    #+#             */
+/*   Updated: 2022/07/11 11:32:01 by rigarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memset(void *str, int c, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	con;
-	char	*aux;
+	t_list	*node;
 
-	aux = str;
-	con = 0;
-	while (con < len)
-	{
-		aux[con] = c;
-		con++;
-	}
-	return (aux);
+	node = malloc(sizeof(t_list));
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
